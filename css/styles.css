@@ -10,6 +10,9 @@
   --border-color: #ececec;
   --icon-color: #afb1b8;
   --background-icon: rgba(255, 255, 255, 0.1);
+  --portfolio-background-color: rgba(33, 150, 243, 0.9);
+  --work-background-color: rgba(47, 48, 58, 0.8);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
 }
 
 p,
@@ -103,6 +106,7 @@ body {
 }
 
 .site-nav .link {
+  position: relative;
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -118,6 +122,18 @@ body {
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
+}
+
+.link.current::after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .site-nav .link.current {
@@ -277,6 +293,32 @@ body {
 }
 .work-element:not(:last-child) {
   margin-right: 30px;
+}
+
+.work-element {
+  position: relative;
+}
+
+.work-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: var(--work-background-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
 }
 
 /* Team */
@@ -484,6 +526,30 @@ body {
   padding: 20px 24px;
 }
 
+.portfolio-overlay {
+  position: relative;
+}
+
+.portfolio-overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 63px 24px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--primary-white-color);
+  background-color: var(--portfolio-background-color);
+  opacity: 0;
+}
+
+.portfolio-overlay-text:hover {
+  opacity: 1;
+}
+
 /* Footer */
 
 .footer {
@@ -575,4 +641,44 @@ body {
 .social-link:hover,
 .social-link:focus {
   background-color: var(--accent-color);
+}
+
+/* Modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--backdrop-color);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 528px;
+  min-height: 581px;
+  background-color: var(--primary-white-color);
+  padding: 8px;
+}
+
+.button-close {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary-white-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
